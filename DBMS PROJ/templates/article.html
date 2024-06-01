@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <style>
+        /* General Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://media.npr.org/assets/img/2013/05/06/tonystark_wide-92e2d9abcce4413d58f728f2b5f126cef71afd97.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Container Styles */
+.container {
+    width: 80%;
+    margin: 20px auto;
+    max-width: 1000px; /* Adjust for larger screens */
+}
+
+/* News Article Styles */
+.news-article {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px; /* Add space between articles */
+}
+
+.news-article img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px; /* Add space between image and text */
+}
+
+.news-article-title {
+    font-size: 24px;
+    margin: 10px 0;
+    font-weight: bold; /* Make title stand out */
+}
+
+.news-article-description {
+    font-size: 18px;
+    color: #555;
+    margin: 10px 0;
+    line-height: 1.5; /* Improve readability with spacing between lines */
+}
+
+.news-article-content {
+    font-size: 16px;
+    color: #333;
+    margin: 10px 0;
+}
+.header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+    </style>
+</head>
+<body>
+  <h1>stark newsapp</h1>
+    <div class="container">
+      <div class="header">
+        <h1>STARKNEWS</h1>
+    </div>
+        <div class="news-article">
+            <img src="{{ image_url }}" alt="News Image">
+            <h1 class="news-article-title">{{ title }}</h1>
+            <p class="news-article-description">{{ description }}</p>
+            <p class="news-article-content">{{ content }}</p>
+        </div>
+    </div>
+</body>
+</html>

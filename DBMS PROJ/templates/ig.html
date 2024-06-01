@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STARKNEWS</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://media.npr.org/assets/img/2013/05/06/tonystark_wide-92e2d9abcce4413d58f728f2b5f126cef71afd97.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            color: #ddd;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 48px;
+            margin: 0;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .selection {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .selection form {
+            display: inline-block;
+        }
+        .news-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .news-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            cursor: pointer;
+        }
+        .news-card img {
+            width: 100%;
+            height: auto;
+        }
+        .news-card-content {
+            padding: 15px;
+        }
+        .news-card-title {
+            font-size: 18px;
+            margin: 0 0 10px;
+            color: #0e0c0c;
+        }
+        .news-card-description {
+            font-size: 14px;
+            color: #0e0c0c;
+        }
+        .news-card a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>STARKNEWS</h1>
+        </div>
+        <div class="selection">
+            <form method="get" action="/">
+                <label for="country">Select Country: </label>
+                <select name="country" id="country" onchange="this.form.submit()">
+                    <option value="ae" {% if country == 'ae' %}selected{% endif %}>United Arab Emirates</option>
+                    <option value="ar" {% if country == 'ar' %}selected{% endif %}>Argentina</option>
+                    <option value="at" {% if country == 'at' %}selected{% endif %}>Austria</option>
+                    <option value="be" {% if country == 'be' %}selected{% endif %}>Belgium</option>
+                    <option value="bg" {% if country == 'bg' %}selected{% endif %}>Bulgaria</option>
+                    <option value="br" {% if country == 'br' %}selected{% endif %}>Brazil</option>
+                    <option value="ch" {% if country == 'ch' %}selected{% endif %}>Switzerland</option>
+                    <option value="cn" {% if country == 'cn' %}selected{% endif %}>China</option>
+                    <option value="co" {% if country == 'co' %}selected{% endif %}>Colombia</option>
+                    <option value="cu" {% if country == 'cu' %}selected{% endif %}>Cuba</option>
+                    <option value="cz" {% if country == 'cz' %}selected{% endif %}>Czech Republic</option>
+                    <option value="eg" {% if country == 'eg' %}selected{% endif %}>Egypt</option>
+                    <option value="gr" {% if country == 'gr' %}selected{% endif %}>Greece</option>
+                    <option value="hk" {% if country == 'hk' %}selected{% endif %}>Hong Kong</option>
+                    <option value="hu" {% if country == 'hu' %}selected{% endif %}>Hungary</option>
+                    <option value="id" {% if country == 'id' %}selected{% endif %}>Indonesia</option>
+                    <option value="ie" {% if country == 'ie' %}selected{% endif %}>Ireland</option>
+                    <option value="il" {% if country == 'il' %}selected{% endif %}>Israel</option>
+                    <option value="in" {% if country == 'in' %}selected{% endif %}>India</option>
+                    <option value="it" {% if country == 'it' %}selected{% endif %}>Italy</option>
+                    <option value="jp" {% if country == 'jp' %}selected{% endif %}>Japan</option>
+                    <option value="kr" {% if country == 'kr' %}selected{% endif %}>South Korea</option>
+                    <option value="mx" {% if country == 'mx' %}selected{% endif %}>Mexico</option>
+                    <option value="my" {% if country == 'my' %}selected{% endif %}>Malaysia</option>
+                    <option value="ng" {% if country == 'ng' %}selected{% endif %}>Nigeria</option>
+                    <option value="nl" {% if country == 'nl' %}selected{% endif %}>Netherlands</option>
+                    <option value="no" {% if country == 'no' %}selected{% endif %}>Norway</option>
+                    <option value="nz" {% if country == 'nz' %}selected{% endif %}>New Zealand</option>
+                    <option value="ph" {% if country == 'ph' %}selected{% endif %}>Philippines</option>
+                    <option value="pl" {% if country == 'pl' %}selected{% endif %}>Poland</option>
+                    <option value="pt" {% if country == 'pt' %}selected{% endif %}>Portugal</option>
+                    <option value="ro" {% if country == 'ro' %}selected{% endif %}>Romania</option>
+                    <option value="ru" {% if country == 'ru' %}selected{% endif %}>Russia</option>
+                    <option value="sa" {% if country == 'sa' %}selected{% endif %}>Saudi Arabia</option>
+                    <option value="se" {% if country == 'se' %}selected{% endif %}>Sweden</option>
+                    <option value="sg" {% if country == 'sg' %}selected{% endif %}>Singapore</option>
+                    <option value="tr" {% if country == 'tr' %}selected{% endif %}>Turkey</option>
+                    <option value="tw" {% if country == 'tw' %}selected{% endif %}>Taiwan</option>
+                    <option value="ua" {% if country == 'ua' %}selected{% endif %}>Ukraine</option>
+                    <option value="za" {% if country == 'za' %}selected{% endif %}>South Africa</option>
+                </select>
+            </form>
+            <form method="get" action="/">
+                <label for="category">Select Category: </label>
+                <select name="category" id="category" onchange="this.form.submit()">
+                    <option value="" {% if not category %}selected{% endif %}>None</option>
+                    <option value="party" {% if category == 'party' %}selected{% endif %}>Party</option>
+                    <option value="actor" {% if category == 'actor' %}selected{% endif %}>Actor</option>
+                    <option value="actress" {% if category == 'actress' %}selected{% endif %}>Actress</option>
+                    <option value="sports" {% if category == 'sports' %}selected{% endif %}>Sports</option>
+                    <option value="crime" {% if category == 'crime' %}selected{% endif %}>Crime</option>
+                    <option value="movies" {% if category == 'movies' %}selected{% endif %}>Movies</option>
+                    <option value="financial" {% if category == 'financial' %}selected{% endif %}>Financial</option>
+                    <option value="share market" {% if category == 'share market' %}selected{% endif %}>Share Market</option>
+                    <option value="gold" {% if category == 'gold' %}selected{% endif %}>Gold</option>
+                    <option value="marvel" {% if category == 'marvel' %}selected{% endif %}>Marvel</option>
+                    <option value="dceu" {% if category == 'dceu' %}selected{% endif %}>DCEU</option>
+                    <option value="anime" {% if category == 'anime' %}selected{% endif %}>Anime</option>
+                </select>
+            </form>
+        </div>
+        <div class="news-container">
+            {% for article in articles %}
+            <div class="news-card">
+                <a href="/article?title={{ article.title }}&image={{ article.urlToImage }}&description={{ article.description }}&content={{ article.content }}">
+                    <img src="{{ article.urlToImage }}" alt="News Image">
+                    <div class="news-card-content">
+                        <h3 class="news-card-title">{{ article.title }}</h3>
+                        <p class="news-card-description">{{ article.description }}</p>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

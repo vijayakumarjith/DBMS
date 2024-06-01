@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Articles for {{ date }}</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        .selection {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .selection form {
+            display: inline-block;
+        }
+        .news-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .news-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            cursor: pointer;
+        }
+        .news-card img {
+            width: 100%;
+            height: auto;
+        }
+        .news-card-content {
+            padding: 15px;
+        }
+        .news-card-title {
+            font-size: 18px;
+            margin: 0 0 10px;
+        }
+        .news-card-description {
+            font-size: 14px;
+            color: #555;
+        }
+        .news-card a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>News Articles for {{ date }}</h1>
+        <div class="news-container">
+            {% if articles %}
+                {% for article in articles %}
+                    <div class="news-card">
+                        {% if article.urlToImage %}
+                            <img src="{{ article.urlToImage }}" alt="Article Image">
+                        {% endif %}
+                        <div class="news-card-content">
+                            <h2 class="news-card-title">{{ article.title }}</h2>
+                            <p class="news-card-description">{{ article.description }}</p>
+                            <a href="{{ article.url }}" target="_blank">Read more</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No articles found for this date.</p>
+            {% endif %}
+        </div>
+        <a href="/" class="back-link">Back to Search</a>
+    </div>
+</body>
+</html>
